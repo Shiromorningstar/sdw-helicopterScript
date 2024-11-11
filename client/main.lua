@@ -56,7 +56,7 @@ Citizen.CreateThread(function()
 			
 			if IsControlJustPressed(0, toggle_spotlight)  and GetPedInVehicleSeat(heli, -1) == lPed then
 				spotlight_state = not spotlight_state
-				TriggerServerEvent("heli:spotlight", spotlight_state)
+				TriggerServerEvent("sdw-helicopterScript:spotlight", spotlight_state)
 				PlaySoundFrontend(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET", false)
 			end
 			
@@ -144,8 +144,8 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterNetEvent('heli:spotlight')
-AddEventHandler('heli:spotlight', function(serverID, state)
+RegisterNetEvent('sdw-helicopterScript:spotlight')
+AddEventHandler('sdw-helicopterScript:spotlight', function(serverID, state)
 	local heli = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(serverID)), false)
 	SetVehicleSearchlight(heli, state, false)
 	Citizen.Trace("Set heli light state to "..tostring(state).." for serverID: "..serverID)
